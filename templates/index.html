@@ -3,17 +3,17 @@
 
 
 {% block content %}
-    <head>
-          <link href={{ url_for("static", filename="style.css") }} rel="stylesheet">
-          <title> Home </title>
-    </head>
-    <body>
+<main class="container signup-section">
+   <div class= section-content>
+   <h2> Welcome to Reedy Projects</h2>
+   
+   
         <a href="{{ url_for('signup')}}" class= "btn-primary"> Sign Up </a>
-        <div class= "header"> Welcome to Reedy Projects</div>
-        <div>  The time is {{current_time}}</div>
-        <div>  Today's date is {{current_date}}</div>
         
-           
-    </body>
+         <p>The time is {{current_time}}</p>
+         <p>Today's date is {{current_date}}</p>
+        
+    </div>       
+    
 
 {% endblock  %}
