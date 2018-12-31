@@ -1,19 +1,19 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
+
+
+
+{% block content %}
     <head>
           <link href={{ url_for("static", filename="style.css") }} rel="stylesheet">
           <title> Home </title>
     </head>
     <body>
-    <a href="{{ url_for('signup')}}" class= "btn-primary"> Sign Up </a>
+        <a href="{{ url_for('signup')}}" class= "btn-primary"> Sign Up </a>
         <div class= "header"> Welcome to Reedy Projects</div>
         <div>  The time is {{current_time}}</div>
         <div>  Today's date is {{current_date}}</div>
         
            
-        
-       
-        
-        
     </body>
-</html>
+
+{% endblock  %}
