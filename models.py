@@ -11,16 +11,6 @@ import os
 
 db = SQLAlchemy()
 
-def main():
-  f = open("flax.csv")
-  reader = csv.reader(f)
-  for assetid, add, cp in reader:
-    asset = Asset(asset_id = assetid, asset_address = add, asset_cpp =cp )
-    db.session.add(asset)
-    print(f"Asset_ID = {asset_id} \n Asset location = {asset_address} \n Control plan page = {asset_cpp}")
-    db.session.commit()
-
-
 
 class User(db.Model):
   __tablename__ = 'users'
@@ -45,11 +35,52 @@ class User(db.Model):
 
 
 class Asset(db.Model):
+  
   __tablename__="assets"
   asset_no = db.Column(db.Integer, autoincrement=True, primary_key=True)
   asset_id = db.Column(db.String)
   asset_address = db.Column(db.String(100))
   asset_cpp = db.Column(db.String(100)) #construction plan page
+
+
+  def __init__(self, asset_no, asset_id, asset_address, asset_cpp):
+    self.asset_no = asset_no
+    self.asset_id = asset_id
+    self.asset_address = asset_address.lower()
+    self.asset_cpp = asset_cpp
+
+  def __repr__(self):
+    return f"Asset ID = {self.asset_id} \n, Asset Location = {self.asset_address.lower()} \n, Asset Plan No = {self.asset_cpp} \n"
+
+  def asset_detail(self):
+    return f"Asset ID = {self.asset_id} \n, Asset Location = {self.asset_address} \n, Asset Plan No = {self.asset_cpp} \n"
+
+
+
+
+# class Timesheet(db.Model):
+#   __tablename__ = "wages"
+#   Sn = db.Column(db.Integer, autoincrement = True, primary_key = True)
+#   date = db.Column(db.DateTime)
+#   medium_pit = db.Column(db.Integer)
+#   large_pit = db.Column(db.Integer)
+#   custom = db.Column(db.Integer)
+#   daily = db.Column(db.Integer)
+
+#   def __repr__(self):
+#     return f"medium = {self.medium_pit} large = {self.large_pit} custom = {self.custom}"
+
+
+  # print (asset_id.__dict__)
+
+  # def Asset_detail(self):
+  #   print (f"Asset ID = {self.asset_id}\n Asset Location = {self.asset_address}\n Asset Plan No = {self.asset_cpp}\n")
+
+
+
+
+
+
   # asset_size_before = db.Column(db.String(100))
   # asset_size_after = db.Column(db.String(100))
   # asset_mould= db.Column(db.String(100))     #nature of pit before upgrade

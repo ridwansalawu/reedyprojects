@@ -24,6 +24,12 @@ def list_data():
     print(f"Asset_ID = {asset_id} \n Asset location = {asset_address} \n Control plan page = {asset_cpp}")
     db.session.commit()
 
+
+def select_list():
+    assets = Asset.query.all()
+    for asset in assets:
+        print (f"the asset id is {asset.asset_id}, while the address of the asset is {asset.asset_address} and its located on page {asset.asset_cpp} of the construction plan")
+
 # if __name__ == "__main__":
 #     with app.app_context():
 #         main()

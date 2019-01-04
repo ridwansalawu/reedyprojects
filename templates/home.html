@@ -3,11 +3,16 @@
 {% block content %}
   <main class="hero-section">
     <div class="container">
-      
-      
+       <h2>Welcome to Reedy Projects</h2>
+        <img alt="Reedy Projects"  width= 25% src="static/images/logo.jpg" >
 
-      <h2>Welcome to Reedy Projects</h2>
-      
+        <a href="{{ url_for('logout') }}" class="btn-secondary">Log Out</a>
+       <form method="POST" action="/home">
+         
+        </form>
+
+
+       
       
     </div>
   </main>

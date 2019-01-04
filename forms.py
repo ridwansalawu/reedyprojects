@@ -10,9 +10,25 @@ class SignupForm(FlaskForm):
     submit = SubmitField("Sign Up")
 
 class LoginForm(FlaskForm):
-  email = StringField('Email', validators=[DataRequired("Please enter your email address."), Email("Hey! a valid email please!!")])
-  password = PasswordField('Password', validators=[DataRequired("Please enter a password.")])
-  submit = SubmitField("Sign in")
+    email = StringField('Email', validators=[DataRequired("Please enter your email address."), Email("Hey! a valid email please!!")])
+    password = PasswordField('Password', validators=[DataRequired("Please enter a password.")])
+    submit = SubmitField("Sign in")
+
+
+class SearchAsset(FlaskForm):
+    asset = StringField("Asset ID", validators=[DataRequired("please enter a valid asset ID"), Length(min=6, message="invalid asset code")])
+    submit = SubmitField("Search")
+
+# class TimeSheet(FlaskForm):
+ 
+#     date = DateField("Date")
+#     medium_pit = IntegerField("Medium Pit")
+#     large_pit = IntegerField("Large Pit")
+#     custom = IntegerField("Custom")
+#     daily = IntegerField("Value")
+  
+
+
 
 # class AddressForm(FlaskForm):
 #   address = StringField('Address', validators=[DataRequired("Please enter an address.")])
